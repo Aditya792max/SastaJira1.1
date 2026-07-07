@@ -138,6 +138,38 @@ router.get("/all", async (req, res) => {
   }
 });
 
+router.get("/getmobile", async(req, res) => {
+  try{
+    console.log("Request Query:", req.query);
+    const {mobile} = req.query;
+    if(!mobile){
+      return res.status(400).json({
+        success: false,
+        message: "Mobile number is required"
+      });
+    }
+    const user = await User.findOne({mobile});
+    if(!user){
+      return res.status(404).json({
+        success: false,
+        message: "User not found"
+      });
+    }
+    return res.status(200).json({
+      success: true,
+      message: "User fetched successfully",
+      data: user
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Error fetching user",
+      error: error.message
+    }); 
+  }
+});
+
+
 
 
 export default router;
