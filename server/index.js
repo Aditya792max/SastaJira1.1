@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRoutes from './Routes/userRoutes.js';
 import ticketRoutes from './Routes/ticketRoutes.js';
+import commentRoutes from './Routes/commentRoutes.js';
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/user', userRoutes);
 app.use('/ticket', ticketRoutes);
+app.use('/comment', commentRoutes);
 
 const PORT = process.env.PORT || 5000;
 const MONGODB = process.env.MONGODB_URI;
