@@ -130,6 +130,7 @@ router.get("/byuser", async (req, res) => {
 });
 
 // Get all Watchers
+//this end point is for testing purpose only, not to be used in productions
 router.get("/all", async (req, res) => {
   try {
     const watchers = await Watcher.find()
@@ -150,5 +151,6 @@ router.get("/all", async (req, res) => {
     });
   }
 });
+
 
 export default router;
